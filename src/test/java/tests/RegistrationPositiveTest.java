@@ -9,10 +9,12 @@ public class RegistrationPositiveTest extends TestBase{
 
     @BeforeMethod
     public void preCondition(){
-        if(isLogged()){
-            logout();
+        if(app.getUser().isLogged()){
+            app.getUser().logout();
         }
     }
+
+
 
 //    WebDriver wd;
 
@@ -31,10 +33,10 @@ public class RegistrationPositiveTest extends TestBase{
        String password = "$Name12345";
         System.out.println("Email: " + email);
 
-        openLoginRegistrationForm();
-        fillLoginRegistrationForm(email, password);
-        submitRegistration();
-        Assert.assertTrue(isElementPresent(By.xpath("//button")));
+        app.getUser().openLoginRegistrationForm();
+        app.getUser().fillLoginRegistrationForm(email, password);
+        app.getUser().submitRegistration();
+        Assert.assertTrue(app.getUser().isElementPresent(By.xpath("//button")));
     }
 
     @Test
@@ -45,9 +47,11 @@ public class RegistrationPositiveTest extends TestBase{
         String password = "$Name12345";
         System.out.println("Email: " + email);
 
-        openLoginRegistrationForm();
-        fillLoginRegistrationForm(email, password);
-        submitRegistration();
+        app.getUser().openLoginRegistrationForm();
+        app.getUser().fillLoginRegistrationForm(email, password);
+        app.getUser().submitRegistration();
+
+        Assert.assertFalse(app.getUser().isLogged());
     }
 
 //
