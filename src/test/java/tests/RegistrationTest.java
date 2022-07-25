@@ -5,7 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class RegistrationPositiveTest extends TestBase{
+public class RegistrationTest extends TestBase{
 
     @BeforeMethod
     public void preCondition(){
@@ -13,8 +13,6 @@ public class RegistrationPositiveTest extends TestBase{
             app.getUser().logout();
         }
     }
-
-
 
 //    WebDriver wd;
 
@@ -51,7 +49,9 @@ public class RegistrationPositiveTest extends TestBase{
         app.getUser().fillLoginRegistrationForm(email, password);
         app.getUser().submitRegistration();
 
-        Assert.assertFalse(app.getUser().isLogged());
+        // Assert.assertFalse(app.getUser().isLogged());
+        Assert.assertTrue(app.getUser().isWrongMessageFormat());
+        Assert.assertTrue(app.getUser().isAlertPresent());
     }
 
 //

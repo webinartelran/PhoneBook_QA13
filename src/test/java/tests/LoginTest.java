@@ -24,55 +24,56 @@ public class LoginTest extends TestBase{
         String email = "abc@def.com";
         String password = "$Abcdef12345";
 
-        openLoginRegistrationForm();
-        fillLoginRegistrationForm(email, password);
-        submitLogin();
+        app.getUser().openLoginRegistrationForm();
+        app.getUser().fillLoginRegistrationForm(email, password);
+        app.getUser().submitLogin();
 
-        pause(3000);
+        app.getUser().pause(3000);
 
-        Assert.assertTrue(isElementPresent(By.xpath("//button")));
+//        Assert.assertTrue(isElementPresent(By.xpath("//button")));
+        Assert.assertTrue(app.getUser().isLogged());
     }
-        @Test
-    public void loginPositiveTestOld(){
-        // open login/registration form
-    wd.findElement(By.xpath("//*[text()='LOGIN']")).click();
-        // fill login/registration form
-        WebElement emailInput = wd.findElement(By.xpath("//input[1]"));
-        emailInput.click();
-        emailInput.clear();
-        emailInput.sendKeys("abc@def.com");
+//        @Test
+//    public void loginPositiveTestOld(){
+//        // open login/registration form
+//    wd.findElement(By.xpath("//*[text()='LOGIN']")).click();
+//        // fill login/registration form
+//        WebElement emailInput = wd.findElement(By.xpath("//input[1]"));
+//        emailInput.click();
+//        emailInput.clear();
+//        emailInput.sendKeys("abc@def.com");
+//
+//        WebElement passInput = wd.findElement(By.xpath("//input[2]"));
+//        passInput.click();
+//        passInput.clear();
+//        passInput.sendKeys("$Abcdef12345");
+//
+//        // click login button
+//        wd.findElement(By.xpath("//button[1]")).click();
+//
+//        // Assert if logout button present
+//        Assert.assertTrue(wd.findElement(By.xpath("//button")) != null);
+//
+//    }
 
-        WebElement passInput = wd.findElement(By.xpath("//input[2]"));
-        passInput.click();
-        passInput.clear();
-        passInput.sendKeys("$Abcdef12345");
-
-        // click login button
-        wd.findElement(By.xpath("//button[1]")).click();
-
-        // Assert if logout button present
-        Assert.assertTrue(wd.findElement(By.xpath("//button")) != null);
-
-    }
-
-    @Test
-    public void loginNegativeTest() {
-        // open login/registration form
-        wd.findElement(By.xpath("//*[text()='LOGIN']")).click();
-        // fill login/registration form
-        WebElement emailInput = wd.findElement(By.xpath("//input[1]"));
-        emailInput.click();
-        emailInput.clear();
-        emailInput.sendKeys("abcdef.com");
-
-        WebElement passInput = wd.findElement(By.xpath("//input[2]"));
-        passInput.click();
-        passInput.clear();
-        passInput.sendKeys("$Abcdef12345");
-
-        // click login button
-        wd.findElement(By.xpath("//button[1]")).click();
-    }
+//    @Test
+//    public void loginNegativeTest() {
+//        // open login/registration form
+//        wd.findElement(By.xpath("//*[text()='LOGIN']")).click();
+//        // fill login/registration form
+//        WebElement emailInput = wd.findElement(By.xpath("//input[1]"));
+//        emailInput.click();
+//        emailInput.clear();
+//        emailInput.sendKeys("abcdef.com");
+//
+//        WebElement passInput = wd.findElement(By.xpath("//input[2]"));
+//        passInput.click();
+//        passInput.clear();
+//        passInput.sendKeys("$Abcdef12345");
+//
+//        // click login button
+//        wd.findElement(By.xpath("//button[1]")).click();
+//    }
 
 
 //    @AfterMethod
